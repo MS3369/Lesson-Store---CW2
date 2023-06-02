@@ -5,7 +5,7 @@
     <title> Lesson Club </title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="layout.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </script>
@@ -36,7 +36,7 @@
                     <br>
                     <div class="search-wrapper">
                         <input v-on:input="filteredList" class="form-control" type="text" v-model="search" placeholder="Search title.." />
-                        <label>Search Subject:</label>
+                        <label>Subject Search:</label>
                     </div>
                 </aside>
                 <main>
@@ -88,18 +88,19 @@
                                 <div class="cart__item" v-for="(item, index) in cart" :key="`cart--${index}`">
                                     <div style="width: auto;"><img :src="item.image" alt=""></div>
                                     <div>{{item.subject}}</div>
-                                    <div>{{item.location}}</div>
                                     <div>{{item.price}}</div>
+                                    <div>{{item.location}}</div>
+                                  
                                     <div style="width: auto;"><button v-on:click="removeFromCart(item)" class="fa fa-minus-square" aria-hidden="true"></button></div>
                                 </div>
                                 <div v-if="!cart.length > 0" class="cart__item" style="background-color: transparent; padding: 20px;">
                                     <div style="text-align: center; color: grey; font-size: 20px; font-weight: bold;">
-                                        List Empty</div>
+                                        Cart Empty !</div>
                                 </div>
                             </div>
                             <hr>
                             <div>
-                                <h3>Student Details</h3>
+                                <h3>User Details</h3>
                                 <div>
                                     <label for="name">Your Name</label>
                                     <input v-model="user.name" type="text" required>
@@ -113,7 +114,7 @@
                                     <input v-model="user.id" type="tel" required>
                                 </div>
                                 <div>
-                                    <label for="name">Space</label>
+                                    <label for="name">No. of enrolment(s)</label>
                                     <input v-model="user.space" type="tel" required>
                                 </div>
                                 <input type="submit" @click="submit" value="Checkout">
@@ -192,7 +193,7 @@
                     }
                 },
                 removeFromCart(lesson) {
-                    if (confirm('You are about to delete this!')) {
+                    if (confirm('Are you sure you want to remove it?')) {
                         this.cart = [...this.cart].filter(item => item.cartId != lesson.cartId)
                     }
                 },
