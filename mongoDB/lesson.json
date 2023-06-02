@@ -7,7 +7,7 @@
   "location": "Business Bay",
   "price": 350,
   "space": 5,
-  "image": "img/English.jpg"
+  "image": "static/English.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e307676897744"
@@ -17,7 +17,7 @@
   "location": "Marina",
   "price": 250,
   "space": 5,
-  "image": "img/Archery.jpg"
+  "image": "static/Archery.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e307676897746"
@@ -27,7 +27,7 @@
   "location": "Jumeirah Towers",
   "price": 300,
   "space": 5,
-  "image": "img/Singing.jpg"
+  "image": "static/Singing.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e307676897748"
@@ -37,7 +37,7 @@
   "location": "Sports City",
   "price": 475,
   "space": 5,
-  "image": "img/Racing.jpg"
+  "image": "static/Racing.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e307676897749"
@@ -47,7 +47,7 @@
   "location": "Sports City",
   "price": 500,
   "space": 5,
-  "image": "img/Swimming.jpg"
+  "image": "static/Swimming.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e30767689774c"
@@ -57,7 +57,7 @@
   "location": "Marina",
   "price": 175,
   "space": 5,
-  "image": "img/Cooking.jpg"
+  "image": "static/Cooking.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e307676897743"
@@ -67,7 +67,7 @@
   "location": "Sports City",
   "price": 425,
   "space": 5,
-  "image": "img/Football.jpg"
+  "image": "static/Football.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e30767689774b"
@@ -77,7 +77,7 @@
   "location": "Sports City",
   "price": 250,
   "space": 5,
-  "image": "img/Cricket.jpg"
+  "image": "static/Cricket.jpg"
 },{
   "_id": {
     "$oid": "63cf6d91525e307676897741"
@@ -86,6 +86,6 @@
   "subject": "Mathmateics",
   "location": "Block 1, Class 108",
   "price": 425,
-  "space": 6,
-  "image": "img/Math.jpg"
+  "space": 5,
+  "image": "static/Math.jpg"
 }]
