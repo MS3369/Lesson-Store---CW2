@@ -26,14 +26,9 @@
 
         <div class="container">
             <div class="root">
-                <!-- sorting -->
+                
                 <aside>
-                    <!-- <h4>Sort by</h4>
-                    <ul>
-                        <li><button v-on:click="type = 'subject'">Subject</button></li>
-                        <li><button v-on:click="type = 'price'">Price</button></li>
-                        <li><button v-on:click="type = 'Location'">Location</button></li>
-                    </ul> -->
+                   
                     <br>
                     <div class="search-wrapper">
                         <label>Lesson Lookup:</label>
@@ -51,7 +46,7 @@
                             </select>
                         </div>
 
-                        <!-- lessons-->
+                        
                         <div class="lessons">
                             <div v-for="(lessons, index) in sortedLessons" :key="`lesson--${index}`" class="lessons__item">
                                 <h2>
@@ -71,12 +66,12 @@
                     </div>
                     <div v-else>
                         <div class="container">
-                            <!-- calculation-->
+                            
                             <div class="title-bar">
                                 <button v-on:click="showCheckout"><span class="fas fa-arrow-left"></span> Back to Lessons </button>
                                 <h4>Total Amount: {{total}}</h4>
                             </div>
-                            <!-- cart-->
+                            
                             <h4>Your cart</h4>
                             <div class="cart">
                                 <div class="cart__item">
@@ -111,14 +106,7 @@
                                     <label for="name">Phone Number</label>
                                     <input v-model="user.number" type="tel" required>
                                 </div>
-                                <!-- <div>
-                                    <label for="name">User Id</label>
-                                    <input v-model="user.id" type="tel" required>
-                                </div>
-                                <div> -->
-                                    <!-- <label for="name">Space</label>
-                                    <input v-model="user.space" type="tel" required>
-                                </div> -->
+                                
                                 <input type="submit" @click="submit" value="Checkout">
                             </div>
                         </div>
