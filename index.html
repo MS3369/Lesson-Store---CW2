@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title></title>
+    <title> Lesson Club </title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="layout.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <!-- <script src="products.js"></script> -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </script>
 
@@ -28,16 +28,17 @@
             <div class="root">
                 <!-- sorting -->
                 <aside>
-                    <h4>Sort by</h4>
+                    <!-- <h4>Sort by</h4>
                     <ul>
                         <li><button v-on:click="type = 'subject'">Subject</button></li>
                         <li><button v-on:click="type = 'price'">Price</button></li>
                         <li><button v-on:click="type = 'Location'">Location</button></li>
-                    </ul>
+                    </ul> -->
                     <br>
                     <div class="search-wrapper">
+                        <label>Lesson Lookup:</label>
                         <input v-on:input="filteredList" class="form-control" type="text" v-model="search" placeholder="Search title.." />
-                        <label>Search Subject:</label>
+                        
                     </div>
                 </aside>
                 <main>
@@ -59,12 +60,12 @@
                                 <figure>
                                     <img v-bind:src="lessons.image" width="250" height="200">
                                 </figure>
-                                <p>Location: {{ lessons.location }}</p>
                                 <p>Price: {{ lessons.price }}</p>
+                                <p>Location: {{ lessons.location }}</p>
                                 <p>Spaces: {{lessons.space}}</p>
                                 <button v-on:click='addToCart(lessons)' :disabled="!lessons.space">Add to cart</button>
                                 <span v-if="lessons.space">{{'Left '+ lessons.space}}</span>
-                                <span v-else>This lesson is fully booked!</span>
+                                <span v-else>The lesson is fully booked!</span>
                             </div>
                         </div>
                     </div>
@@ -72,7 +73,7 @@
                         <div class="container">
                             <!-- calculation-->
                             <div class="title-bar">
-                                <button v-on:click="showCheckout"><span class="fas fa-arrow-left"></span> Previous page</button>
+                                <button v-on:click="showCheckout"><span class="fas fa-arrow-left"></span> Back to Lessons </button>
                                 <h4>Total Amount: {{total}}</h4>
                             </div>
                             <!-- cart-->
@@ -81,25 +82,27 @@
                                 <div class="cart__item">
                                     <div style="width: auto;">Image</div>
                                     <div>Subject</div>
-                                    <div>Location</div>
                                     <div>Price</div>
+                                    <div>Location</div>
+                                    
                                 </div>
                                 <hr style="width: 100%">
                                 <div class="cart__item" v-for="(item, index) in cart" :key="`cart--${index}`">
                                     <div style="width: auto;"><img :src="item.image" alt=""></div>
                                     <div>{{item.subject}}</div>
-                                    <div>{{item.location}}</div>
                                     <div>{{item.price}}</div>
+                                    <div>{{item.location}}</div>
+                                    
                                     <div style="width: auto;"><button v-on:click="removeFromCart(item)" class="fa fa-minus-square" aria-hidden="true"></button></div>
                                 </div>
                                 <div v-if="!cart.length > 0" class="cart__item" style="background-color: transparent; padding: 20px;">
-                                    <div style="text-align: center; color: grey; font-size: 20px; font-weight: bold;">
-                                        List Empty</div>
+                                    <div style="text-align: center; color: red; font-size: 20px; font-weight: bold;">
+                                        Your Cart is Empty</div>
                                 </div>
                             </div>
                             <hr>
                             <div>
-                                <h3>Student Details</h3>
+                                <h3>User Details</h3>
                                 <div>
                                     <label for="name">Your Name</label>
                                     <input v-model="user.name" type="text" required>
@@ -108,14 +111,14 @@
                                     <label for="name">Phone Number</label>
                                     <input v-model="user.number" type="tel" required>
                                 </div>
-                                <div>
+                                <!-- <div>
                                     <label for="name">User Id</label>
                                     <input v-model="user.id" type="tel" required>
                                 </div>
-                                <div>
-                                    <label for="name">Space</label>
+                                <div> -->
+                                    <!-- <label for="name">Space</label>
                                     <input v-model="user.space" type="tel" required>
-                                </div>
+                                </div> -->
                                 <input type="submit" @click="submit" value="Checkout">
                             </div>
                         </div>
@@ -130,7 +133,7 @@
             el: '#app',
             data: {
                 search: '',
-                sitename: 'Classic University',
+                sitename: 'Lesson Club',
                 lessons: [],
                 cart: [],
                 showProduct: false,
@@ -153,16 +156,7 @@
                 console.log(result)
             },
             methods: {
-                // filteredList() {
-                //     fetch(`http://localhost:3000/lesson/search?key_word=${this.search}`)
-                //         .then(response => response.json())
-                //         .then(data => {
-                //             this.lessons = data;
-                //         })
-                //         .catch(error => {
-                //             console.error(error);
-                //         });
-                // },
+             
                 filteredList() {
                     fetch(`http://localhost:3000/collection/lesson/search?key_word=${this.search}`)
                         .then(response => response.json())
@@ -174,13 +168,6 @@
                         });
                 },
 
-                // addToCart(lesson) {
-                //     this.lessons.find(item => item.id == lesson.id).space -= 1;
-                //     this.cart.push({
-                //         cartId: (this.cart.length + 1),
-                //         ...lesson
-                //     });
-                // },
                 addToCart(lesson) {
                     const lessonIndex = this.lessons.findIndex(item => item.id === lesson.id);
                     if (lessonIndex !== -1 && this.lessons[lessonIndex].space > 0) {
@@ -219,11 +206,11 @@
                         .then(data => {
                             console.log("Order submitted:", data);
                             alert(data.message);
-                            // Handle the response data here (e.g., show a success message)
+                            
                         })
                         .catch(error => {
                             console.log("Error submitting order:", error);
-                            // Handle the error here (e.g., show an error message)
+                            
                         });
                 }
             },
