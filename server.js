@@ -14,7 +14,7 @@ app.use((req, res, next) => {
     next();
 });
 
-MongoClient.connect("mongodb+srv://SK:abcdf123@cluster0.zy6xewn.mongodb.net/", (err, client) => {
+MongoClient.connect("mongodb+srv://sualehkhalifa:abcde123@cluster0.e0jwpze.mongodb.net/", (err, client) => {
     if (err) {
         console.error('Error connecting to the database:', err);
     } else {
@@ -88,7 +88,7 @@ MongoClient.connect("mongodb+srv://SK:abcdf123@cluster0.zy6xewn.mongodb.net/", (
             const order = req.body; // Assuming the order data is sent in the request body
 
             // Get the reference to the orders collection in MongoDB
-            const ordersCollection = client.db(LessonClub).collection('order');
+            const ordersCollection = client.db('LessonClub').collection('order');
 
             // Insert the order into MongoDB
             ordersCollection.insertOne(order, (err, result) => {
