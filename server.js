@@ -21,10 +21,10 @@ MongoClient.connect("mongodb+srv://sualehkhalifa:abcde123@cluster0.e0jwpze.mongo
         const db = client.db('LessonClub');
         console.log("Database connected");
 
-        // Create Lesson Model
+
         const Lesson = db.collection('lesson');
 
-        // Fetch all lessons
+        
         app.get('/lesson', (req, res) => {
             Lesson.find({}).toArray((err, lessons) => {
                 if (err) {
@@ -55,7 +55,7 @@ MongoClient.connect("mongodb+srv://sualehkhalifa:abcde123@cluster0.e0jwpze.mongo
             });
         });
 
-        // Update an object
+        
         app.put('/collection/:collectionName/:id', (req, res, next) => {
             let id = new ObjectId(req.params.id);
             req.collection.updateOne({ _id: id }, { $set: req.body }, { safe: true, multi: false },
@@ -65,7 +65,7 @@ MongoClient.connect("mongodb+srv://sualehkhalifa:abcde123@cluster0.e0jwpze.mongo
                 });
         });
 
-        // Search
+        
         app.get('/collection/:collectionName/search', (req, res, next) => {
             let query_str = req.query.key_word;
             req.collection.find({}).toArray((e, results) => {
@@ -76,21 +76,13 @@ MongoClient.connect("mongodb+srv://sualehkhalifa:abcde123@cluster0.e0jwpze.mongo
                 res.send(newList);
             });
         });
-        //Order
-        // app.post('/collection/order', (req, res, next) => {
-        //     req.collection.insert(req.body, (e, result) => {
-        //         if (e) return next(e);
-        //         let response = { "message": "success" };
-        //         res.send(response);
-        //     });
-        // });
+        
         app.post('/collection/orders', (req, res) => {
-            const order = req.body; // Assuming the order data is sent in the request body
-
-            // Get the reference to the orders collection in MongoDB
+            const order = req.body; 
+            
             const ordersCollection = client.db('LessonClub').collection('order');
 
-            // Insert the order into MongoDB
+            
             ordersCollection.insertOne(order, (err, result) => {
                 if (err) {
                     console.error('Error inserting order:', err);
